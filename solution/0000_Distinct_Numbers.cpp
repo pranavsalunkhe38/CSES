@@ -1,7 +1,7 @@
 // LC: 0000 Placeholder-slug
 // Title: Placeholder-slug
 // Difficulty:
-// Date: 18 April 2026
+// Date: 20 April 2026
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -133,6 +133,20 @@ void print_vec(const vector<T> &v, char sep = ' ')
 // ---------- solve ----------
 void solve()
 {
+    int n; cin>>n;
+    vector<int> v(n); read_vec(v);
+    sort(v.begin(), v.end());
+    int prev = 0;
+    int cnt = 0;
+    for(int i=0; i < n; i++){
+        if(v[i] != prev){
+            cnt++;
+
+        }
+        prev = v[i];
+
+    }
+    cout<<cnt<<endl;
 }
 
 // ---------- main ----------
@@ -143,9 +157,6 @@ int main()
 
     int T = 1;
     
-    #ifndef debug
-    cin >> T;
-    #endif
 
     while (T--)
         solve();

@@ -142,10 +142,7 @@ int main()
     cin.tie(nullptr);
 
     int T = 1;
-    
-    #ifndef debug
     cin >> T;
-    #endif
 
     while (T--)
         solve();
