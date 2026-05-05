@@ -142,10 +142,26 @@ int main()
     cin.tie(nullptr);
 
     int T = 1;
-    cin >> T;
 
     while (T--)
         solve();
 
     return 0;
 }
+
+/*
+    FILE* in = freopen("../test_input-2.txt", "r", stdin);
+
+    if (!in) {
+        cerr << "Could not open test_input-2.txt\n";
+        return 1;
+    }
+
+    FILE* out = freopen("../output.txt", "w", stdout);
+
+    if (!out) {
+        cerr << "Could not open output.txt\n";
+        return 1;
+    }
+
+    */

@@ -1,7 +1,7 @@
-// LC: 0000 placeholder-slug
-// Title: Placeholder Title
-// Difficulty:
-// Date:
+// LC: 0000 Josephus Queries
+// Title: Josephus Queries
+// Difficulty: HARD
+// Date: 05 May 2026
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -131,8 +131,38 @@ void print_vec(const vector<T> &v, char sep = ' ')
 }
 
 // ---------- solve ----------
+ll func(ll n, ll k){
+    if(n == 1){
+        return 1;
+    }
+
+    if(k <= (n+1)/2){
+        if((2*k) > n) return (2*k) % n;
+        return 2*k;
+    }
+
+    int temp = func(n/2, k - ((n+1)/2));
+
+    if(n%2 == 0){
+        temp = temp*2-1;
+    }
+    else{
+        temp = temp*2+1;
+    }
+
+    return temp;
+
+}
 void solve()
 {
+    ll q;
+    cin>>q;
+
+    for(ll i=0; i < q; i++){
+        ll a,b;
+        cin>>a>>b;
+        cout<<func(a,b)<<endl;
+    }
 }
 
 // ---------- main ----------
@@ -140,7 +170,7 @@ int main()
 {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-
+    
     int T = 1;
 
     while (T--)
@@ -148,20 +178,3 @@ int main()
 
     return 0;
 }
-
-/*
-    FILE* in = freopen("../test_input-2.txt", "r", stdin);
-
-    if (!in) {
-        cerr << "Could not open test_input-2.txt\n";
-        return 1;
-    }
-
-    FILE* out = freopen("../output.txt", "w", stdout);
-
-    if (!out) {
-        cerr << "Could not open output.txt\n";
-        return 1;
-    }
-
-    */
