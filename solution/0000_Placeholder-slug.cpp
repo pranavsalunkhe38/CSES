@@ -1,7 +1,7 @@
 // LC: 0000 Placeholder-slug
 // Title: Placeholder-slug
 // Difficulty:
-// Date: 03 May 2026
+// Date: 15 May 2026
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -131,37 +131,22 @@ void print_vec(const vector<T> &v, char sep = ' ')
 }
 
 // ---------- solve ----------
-int rec(vector<pair<int,int>> v, int i, unordered_set<int>& st){
-    if(i == 0){
-        return 0;
-    }
-
-    //notpick
-    int ans = rec(v, i-1, st);
-
-    if(st.find(v[i].first) != st.end() && st.find(v[i].second) != st.end()){
-        //pick
-        st.insert(v[i].first);
-        st.insert(v[i].second);
-        ans  = max(ans, 1 + rec(v, i+1,st));
-        st.remove(v[i].first);
-        st.remove(v[i].second);
-    }
-
-    return ans;
-}
 void solve()
 {
     int n;
     cin>>n;
-    vector<pair<int,int>> v;
-    int a,b;
-    for(int i=0; i< n-1;i++){
-        cin>>a>>b;
-        v.push_back({a,b});
+    vector<int> v(n);
+    read_vec(v);
+
+    int curr = 0;
+    int ans = 0;
+
+    for(auto& i: v){
+        curr = max(curr, curr+v[i]);
+        ans = max(ans,curr);
     }
-    unordered_set<int> st;
-    int ans = rec(v, n-2; st);
+
+
     cout<<ans<<endl;
 }
 
@@ -172,10 +157,26 @@ int main()
     cin.tie(nullptr);
 
     int T = 1;
-    cin >> T;
 
     while (T--)
         solve();
 
     return 0;
 }
+
+/*
+    FILE* in = freopen("../test_input-2.txt", "r", stdin);
+
+    if (!in) {
+        cerr << "Could not open test_input-2.txt\n";
+        return 1;
+    }
+
+    FILE* out = freopen("../output.txt", "w", stdout);
+
+    if (!out) {
+        cerr << "Could not open output.txt\n";
+        return 1;
+    }
+
+    */
